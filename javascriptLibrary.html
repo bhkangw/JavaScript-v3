@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var _ = {
+            map: function (arr, callback) {
+                var newarr = []
+                for (let i of arr) {
+                    newarr.push(callback(i))
+                }
+                return newarr;
+            },
+            reduce: function (arr, callback) {
+                var memo = arr[0]
+                for(var i = 1; i < arr.length; i++){
+                    memo = callback(memo, arr[i])
+                }
+                return memo
+            },
+            find: function (arr, callback) {
+                for(let i of arr){
+                    if(callback(i)){
+                        return i
+                    }
+                }
+            },
+            filter: function (arr, callback) {
+                var newarr = []
+                for(let i of arr) {
+                    if (callback(i)) {
+                        newarr.push(i)
+                    }
+                }
+            },
+            reject: function (arr, callback) {
+                var newarr = []
+                for(let i of arr) {
+                    if(!callback(i)) {
+                        newarr.push(i)
+                    }
+                }
+            }
+        }
+
+        var map = _.map([1, 2, 3], function (num) { return num * 3; });
+        console.log(map)
+
+
+</script>
+</html>

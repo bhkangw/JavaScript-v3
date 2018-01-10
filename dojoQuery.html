@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DojoQuery</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+    <button id="hi"></button>
+</body>
+</html>
+<script>
+    $Dojo("hi").click(function () { console.log("The button was clicked!") });
+    $Dojo("hi").hover(function () { console.log("The button was hovered on!")}, function () {
+        console.log("The button was hovered off")
+    });
+</script>
+<script>
+    ($Dojo = function (id){
+        var element = document.getElementById(id);
+        return {
+            click: function (callback){
+                element.addEventListener("click", callback);
+            },
+            hover: function (callback1, callback2){
+                element.addEventListener("mouseover", callback1);
+                element.addEventListener("mouseout", callback2);
+            },
+        }
+    })()
+</script>
